@@ -26,7 +26,7 @@ const WatchPage = () => {
     );
 
     setChannelData(filtered);
-    console.log(json.items[0]);
+    // console.log(json.items[0]);
   };
 
   // console.log(searchParams.get("v"));

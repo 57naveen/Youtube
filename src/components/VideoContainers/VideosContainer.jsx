@@ -16,9 +16,9 @@ const VideosContainer = () => {
 
     const data = await fetch(url);
     const json = await data.json();
-    console.log(json.items);
+    // console.log(json.items);
     // setVideos(json.items);
-    console.log("Fetched page token:", json.nextPageToken);
+    // console.log("Fetched page token:", json.nextPageToken);
     return json;
   };
 
