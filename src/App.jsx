@@ -6,6 +6,7 @@ import AppStore from "./utils/store";
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
+import SearchedResults from "./components/SearchedResults";
 
 function App() {
 
@@ -21,6 +22,10 @@ function App() {
         path:"watch",
         element:<WatchPage/>
       },
+      {
+        path:"/search/:query",
+        element:<SearchedResults/>
+      }
     ]
 
   }])
@@ -28,7 +33,7 @@ function App() {
   return (
     <>
       <Provider store={AppStore}>
-        <Head />
+        {/* <Head /> */}
          <RouterProvider router={AppRouter} />
       </Provider> 
     </>

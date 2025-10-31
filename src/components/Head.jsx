@@ -4,16 +4,28 @@ import { toggleMenu } from "../utils/appSlice";
 import { Link } from "react-router-dom";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import { useNavigate } from "react-router-dom";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [Suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
+
+  const navigate = useNavigate();
+
+const handleSearch = () => {
+  if (searchQuery.trim() !== "") {
+    navigate(`/search/${searchQuery}`);
+  }
+};
+
   const dispatch = useDispatch();
   const handelToggleMenu = () => {
     dispatch(toggleMenu());
   };
+
+
 
   const searchCache = useSelector((store) => store.search);
 
@@ -80,8 +92,9 @@ const Head = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setShowSuggestions(true)}
             onBlur={() => setShowSuggestions(false)}
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
           />
-          <button className="h-8  border px-3 border-gray-400 rounded-r-full bg-gray-200">
+          <button  onClick={handleSearch} className="h-8 cursor-pointer  border px-3 border-gray-400 rounded-r-full bg-gray-200">
             <img className="h-4" src="/image/loupe.png" />
           </button>
         </div>
